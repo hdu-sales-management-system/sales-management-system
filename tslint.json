@@ -29,10 +29,12 @@
       }
     ],
     "object-literal-sort-keys": false,
+    "objects": "ignore",
     "max-classes-per-file": [
       true,
       10
     ],
+    "semicolon": [true, "never"],
     "variable-name": [
       true,
       "allow-leading-underscore"

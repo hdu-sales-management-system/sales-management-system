@@ -9,6 +9,7 @@ logs/
 .vscode
 *.swp
 *.lock
+!yarn.lock
 *.js
 !.autod.conf.js
 
