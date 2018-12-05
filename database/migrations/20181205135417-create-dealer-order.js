@@ -34,4 +34,4 @@ module.exports = {
     },
   }),
   down: (queryInterface, Sequelize) => queryInterface.dropTable('dealer_orders'),
-};
+}

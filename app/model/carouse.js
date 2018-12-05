@@ -3,7 +3,7 @@ module.exports = (app) => {
     STRING,
     DATE,
     INTEGER,
-  } = app.Sequelize;
+  } = app.Sequelize
   const carouse = app.model.define('carouse', {
     name: STRING,
     url: STRING,
@@ -12,9 +12,9 @@ module.exports = (app) => {
     priority: INTEGER,
   }, {
     underscored: true,
-  });
+  })
   carouse.associate = function (models) {
     // associations can be defined here
-  };
-  return carouse;
-};
+  }
+  return carouse
+}

@@ -3,16 +3,16 @@ module.exports = (app) => {
     DOUBLE,
     INTEGER,
     STRING,
-  } = app.Sequelize;
-  const order_item = app.model.define('order_item', {
+  } = app.Sequelize
+  const orderItem = app.model.define('order_item', {
     type: STRING,
     count: INTEGER,
     price: DOUBLE,
   }, {
     underscored: true,
-  });
-  order_item.associate = function (models) {
+  })
+  orderItem.associate = function (models) {
     // associations can be defined here
-  };
-  return order_item;
-};
+  }
+  return orderItem
+}

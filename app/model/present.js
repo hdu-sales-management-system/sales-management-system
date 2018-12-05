@@ -5,7 +5,7 @@ module.exports = (app) => {
     TEXT,
     STRING,
     BOOLEAN,
-  } = app.Sequelize;
+  } = app.Sequelize
   const present = app.model.define('present', {
     name: STRING,
     title: STRING,
@@ -22,9 +22,9 @@ module.exports = (app) => {
     cateory: STRING,
   }, {
     underscored: true,
-  });
+  })
   present.associate = function (models) {
     // associations can be defined here
-  };
-  return present;
-};
+  }
+  return present
+}

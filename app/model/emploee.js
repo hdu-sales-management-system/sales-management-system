@@ -4,7 +4,7 @@ module.exports = (app) => {
     DOUBLE,
     STRING,
     BOOLEAN,
-  } = app.Sequelize;
+  } = app.Sequelize
   const emploee = app.model.define('emploee', {
     name: STRING,
     position: STRING,
@@ -18,9 +18,9 @@ module.exports = (app) => {
     salary: DOUBLE,
   }, {
     underscored: true,
-  });
+  })
   emploee.associate = function (models) {
     // associations can be defined here
-  };
-  return emploee;
-};
+  }
+  return emploee
+}

@@ -1,9 +1,9 @@
-module.exports = function (app) {
+module.exports = (app) => {
   const {
     STRING,
     DATE,
     TEXT,
-  } = app.Sequelize;
+  } = app.Sequelize
   const article = app.model.define('article', {
     title: STRING,
     author: STRING,
@@ -12,9 +12,9 @@ module.exports = function (app) {
     publish_date: DATE,
   }, {
     underscored: true,
-  });
+  })
   article.associate = function (models) {
     // associations can be defined here
-  };
-  return article;
-};
+  }
+  return article
+}

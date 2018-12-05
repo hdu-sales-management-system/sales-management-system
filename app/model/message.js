@@ -4,7 +4,7 @@ module.exports = (app) => {
     TEXT,
     STRING,
     BOOLEAN,
-  } = app.Sequelize;
+  } = app.Sequelize
   const message = app.model.define('message', {
     type: STRING,
     title: STRING,
@@ -13,9 +13,9 @@ module.exports = (app) => {
     send_time: DATE,
   }, {
     underscored: true,
-  });
+  })
   message.associate = function (models) {
     // associations can be defined here
-  };
-  return message;
-};
+  }
+  return message
+}
