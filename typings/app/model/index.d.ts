@@ -2,7 +2,6 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import "egg-sequelize";
 import ExportArticle from '../../../app/model/article';
 import ExportCarouse from '../../../app/model/carouse';
 import ExportComment from '../../../app/model/comment';
@@ -20,25 +19,6 @@ import ExportUser from '../../../app/model/user';
 
 declare module 'sequelize' {
   interface Sequelize {
-    Article: ReturnType<typeof ExportArticle>;
-    Carouse: ReturnType<typeof ExportCarouse>;
-    Comment: ReturnType<typeof ExportComment>;
-    Dealer: ReturnType<typeof ExportDealer>;
-    DealerOrder: ReturnType<typeof ExportDealerOrder>;
-    Depot: ReturnType<typeof ExportDepot>;
-    Emploee: ReturnType<typeof ExportEmploee>;
-    Image: ReturnType<typeof ExportImage>;
-    Message: ReturnType<typeof ExportMessage>;
-    Order: ReturnType<typeof ExportOrder>;
-    OrderItem: ReturnType<typeof ExportOrderItem>;
-    Present: ReturnType<typeof ExportPresent>;
-    Tag: ReturnType<typeof ExportTag>;
-    User: ReturnType<typeof ExportUser>;
-  }
-}
-
-declare module 'egg' {
-  interface IModel {
     Article: ReturnType<typeof ExportArticle>;
     Carouse: ReturnType<typeof ExportCarouse>;
     Comment: ReturnType<typeof ExportComment>;
