@@ -3,7 +3,7 @@ module.exports = (app) => {
     DOUBLE,
     INTEGER,
     STRING,
-  } = app.Sequelize
+  } = app.Sequelize;
   const order_item = app.model.define('order_item', {
     type: STRING,
     count: INTEGER,
@@ -11,7 +11,7 @@ module.exports = (app) => {
   }, {
     underscored: true,
   });
-  order_item.associate = function(models) {
+  order_item.associate = function (models) {
     // associations can be defined here
   };
   return order_item;

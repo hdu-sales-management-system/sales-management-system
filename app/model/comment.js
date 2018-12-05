@@ -2,14 +2,14 @@ module.exports = (app) => {
   const {
     INTEGER,
     TEXT,
-  } = app.Sequelize
+  } = app.Sequelize;
   const comment = app.model.define('comment', {
     content: TEXT,
-    starts: INTEGER
+    starts: INTEGER,
   }, {
     underscored: true,
   });
-  comment.associate = function(models) {
+  comment.associate = function (models) {
     // associations can be defined here
   };
   return comment;

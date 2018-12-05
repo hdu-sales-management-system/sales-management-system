@@ -3,7 +3,7 @@ module.exports = (app) => {
     DATE,
     STRING,
     BOOLEAN,
-  } = app.Sequelize
+  } = app.Sequelize;
   const user = app.model.define('user', {
     nickname: STRING,
     password: STRING,
@@ -11,11 +11,11 @@ module.exports = (app) => {
     birthday: DATE,
     name: STRING,
     gender: BOOLEAN,
-    phone: STRING
+    phone: STRING,
   }, {
     underscored: true,
   });
-  user.associate = function(models) {
+  user.associate = function (models) {
     // associations can be defined here
   };
   return user;

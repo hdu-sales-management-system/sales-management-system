@@ -3,8 +3,8 @@ module.exports = (app) => {
     DATE,
     DOUBLE,
     STRING,
-    BOOLEAN
-  } = app.Sequelize
+    BOOLEAN,
+  } = app.Sequelize;
   const emploee = app.model.define('emploee', {
     name: STRING,
     position: STRING,
@@ -15,11 +15,11 @@ module.exports = (app) => {
     gender: BOOLEAN,
     entry_year: DATE,
     resignation: BOOLEAN,
-    salary: DOUBLE
+    salary: DOUBLE,
   }, {
     underscored: true,
   });
-  emploee.associate = function(models) {
+  emploee.associate = function (models) {
     // associations can be defined here
   };
   return emploee;
