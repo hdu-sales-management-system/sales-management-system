@@ -15,11 +15,14 @@ export default (appInfo: EggAppInfo) => {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   }
 
+  // @see https://github.com/eggjs/egg/issues/715
   config.sequelize = {
     dialect: 'mysql',
     host: '127.0.0.1',
     port: 3306,
-    database: 'egg-sequelize-doc-default',
+    username: 'root',
+    password: '1203my',
+    database: 'sale-system',
   }
   // the return config will combines to EggAppConfig
   return {
