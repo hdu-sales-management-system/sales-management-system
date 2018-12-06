@@ -11,8 +11,12 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  dealer.associate = function (models) {
+  dealer.associate = function dealerAssiate() {
     // associations can be defined here
+    const {
+      DealerOrder, Dealer,
+    } = app.model
+    Dealer.hasMany(DealerOrder)
   }
   return dealer
 }

@@ -1,33 +1,24 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('dealer_orders', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('comments', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    state: {
-      type: Sequelize.STRING,
+    content: {
+      type: Sequelize.TEXT,
     },
-    feedback: {
-      type: Sequelize.STRING,
+    starts: {
+      type: Sequelize.INTEGER,
     },
-    sum_momey: {
-      type: Sequelize.DOUBLE,
-    },
-    start_date: {
-      type: Sequelize.DATE,
-    },
-    received_date: {
-      type: Sequelize.DATE,
-    },
-    dealer_id: {
+    present_id: {
       type: Sequelize.INTEGER,
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
       references: {
-        model: 'dealers',
+        model: 'presents',
         key: 'id',
       },
       allowNull: true,
@@ -43,5 +34,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('dealer_orders'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('comments'),
 }

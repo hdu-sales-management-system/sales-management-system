@@ -15,6 +15,16 @@ module.exports = {
       type: Sequelize.DATE,
       defaultValue: Sequelize.fn('NOW'),
     },
+    present_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'presents',
+        key: 'id',
+      },
+      allowNull: true,
+    },
     updated_at: {
       allowNull: false,
       type: Sequelize.DATE,

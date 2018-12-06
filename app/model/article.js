@@ -13,8 +13,11 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  article.associate = function (models) {
-    // associations can be defined here
+  article.associate = function articleAssociate() {
+    const {
+      Article, Emploee,
+    } = app.model
+    Article.belongsTo(Emploee, { as: 'Author' })
   }
   return article
 }

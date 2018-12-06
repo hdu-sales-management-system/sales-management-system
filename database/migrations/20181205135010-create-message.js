@@ -22,6 +22,16 @@ module.exports = {
     send_time: {
       type: Sequelize.DATE,
     },
+    user_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'users',
+        key: 'id',
+      },
+      allowNull: true,
+    },
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,

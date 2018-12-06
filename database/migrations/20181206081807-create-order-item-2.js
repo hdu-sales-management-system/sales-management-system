@@ -1,6 +1,7 @@
 
+
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('dealer_orders', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('order_item2s', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -10,24 +11,21 @@ module.exports = {
     state: {
       type: Sequelize.STRING,
     },
-    feedback: {
-      type: Sequelize.STRING,
-    },
-    sum_momey: {
+    sum_money: {
       type: Sequelize.DOUBLE,
     },
     start_date: {
       type: Sequelize.DATE,
     },
-    received_date: {
+    recived_date: {
       type: Sequelize.DATE,
     },
-    dealer_id: {
+    dealer_order_id: {
       type: Sequelize.INTEGER,
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
       references: {
-        model: 'dealers',
+        model: 'dealer_orders',
         key: 'id',
       },
       allowNull: true,
@@ -43,5 +41,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('dealer_orders'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('order_item2s'),
 }

@@ -1,20 +1,31 @@
 
+
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('depots', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('logs', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    name: {
+    body: {
+      type: Sequelize.TEXT,
+    },
+    title: {
       type: Sequelize.STRING,
     },
-    address: {
+    level: {
       type: Sequelize.STRING,
     },
-    manage_phone: {
-      type: Sequelize.STRING,
+    emploee_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'emploees',
+        key: 'id',
+      },
+      allowNull: true,
     },
     created_at: {
       allowNull: false,
@@ -27,5 +38,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('depots'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('logs'),
 }

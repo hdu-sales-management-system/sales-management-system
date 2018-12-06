@@ -14,8 +14,12 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  message.associate = function (models) {
-    // associations can be defined here
+  message.associate = function messageAssociate(models) {
+    const {
+      Message,
+      User,
+    } = app.model
+    Message.belongsTo(User)
   }
   return message
 }

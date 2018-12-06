@@ -19,8 +19,10 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  emploee.associate = function (models) {
-    // associations can be defined here
+  emploee.associate = function emploeeAssociate() {
+    const { Emploee, Article, Log } = app.model
+    Emploee.hasMany(Article)
+    Log.belongsTo(Emploee)
   }
   return emploee
 }

@@ -13,8 +13,12 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  Order.associate = function (models) {
-    // associations can be defined here
+  Order.associate = function orderAssociate() {
+    const { 
+      OrderItem, User, 
+    } = app.model
+    Order.belongsTo(User)
+    Order.hasmany(OrderItem)
   }
   return Order
 }

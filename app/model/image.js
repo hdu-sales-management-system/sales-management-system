@@ -7,8 +7,10 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  image.associate = function (models) {
+  image.associate = function imageAssociate(models) {
     // associations can be defined here
+    const { Image, Present } = app.model
+    Image.belongsTo(Present)
   }
   return image
 }

@@ -22,6 +22,16 @@ module.exports = {
     publish_date: {
       type: Sequelize.DATE,
     },
+    author_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'emploees',
+        key: 'id',
+      },
+      allowNull: true,
+    },
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,

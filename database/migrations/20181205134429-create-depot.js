@@ -1,26 +1,30 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('orders', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('depots', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    status: {
+    name: {
       type: Sequelize.STRING,
     },
-    sum_momey: {
-      type: Sequelize.DOUBLE,
-    },
-    feedback: {
+    address: {
       type: Sequelize.STRING,
     },
-    start_date: {
-      type: Sequelize.DATE,
+    manage_phone: {
+      type: Sequelize.STRING,
     },
-    received_date: {
-      type: Sequelize.DATE,
+    manager_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'emploees',
+        key: 'id',
+      },
+      allowNull: true,
     },
     created_at: {
       allowNull: false,
@@ -33,5 +37,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('orders'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('depots'),
 }

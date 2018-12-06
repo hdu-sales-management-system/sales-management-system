@@ -15,8 +15,14 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  user.associate = function (models) {
+  user.associate = function userAssociate(models) {
     // associations can be defined here
+    const { 
+      User, Cart, Message, Order, 
+    } = app.model
+    User.hasMany(Cart)
+    User.hasMany(Message)
+    User.hasMany(Order)
   }
   return user
 }

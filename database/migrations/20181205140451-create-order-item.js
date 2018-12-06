@@ -16,6 +16,16 @@ module.exports = {
     price: {
       type: Sequelize.DOUBLE,
     },
+    order_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'orders',
+        key: 'id',
+      },
+      allowNull: true,
+    },
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,

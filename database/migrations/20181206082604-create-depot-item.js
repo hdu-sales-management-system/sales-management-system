@@ -1,6 +1,7 @@
 
+
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('presents', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('depot_items', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -10,41 +11,30 @@ module.exports = {
     name: {
       type: Sequelize.STRING,
     },
-    title: {
-      type: Sequelize.STRING,
-    },
-    status: {
-      type: Sequelize.STRING,
-    },
-    off: {
-      type: Sequelize.BOOLEAN,
-    },
-    offcost: {
-      type: Sequelize.DOUBLE,
-    },
-    hot: {
-      type: Sequelize.INTEGER,
-    },
     count: {
       type: Sequelize.INTEGER,
     },
-    decription: {
-      type: Sequelize.TEXT,
+    location: {
+      type: Sequelize.STRING,
     },
-    starts: {
+    purchase_price: {
+      type: Sequelize.DOUBLE,
+    },
+    supplier: {
+      type: Sequelize.STRING,
+    },
+    bar_code: {
+      type: Sequelize.STRING,
+    },
+    depot_id: {
       type: Sequelize.INTEGER,
-    },
-    originl_price: {
-      type: Sequelize.DOUBLE,
-    },
-    price: {
-      type: Sequelize.DOUBLE,
-    },
-    cover: {
-      type: Sequelize.STRING,
-    },
-    cateory: {
-      type: Sequelize.STRING,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'depots',
+        key: 'id',
+      },
+      allowNull: true,
     },
     created_at: {
       allowNull: false,
@@ -57,5 +47,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('presents'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('depot_items'),
 }

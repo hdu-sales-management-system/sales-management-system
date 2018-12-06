@@ -20,7 +20,8 @@
     "lint": "tslint --project . -c tslint.json",
     "lint:es": "eslint --ext .js database --fix -f table && eslint --ext .js app/model --fix -f table",
     "clean": "ets clean",
-    "sq": "./node_modules/.bin/sequelize"
+    "sq": "./node_modules/.bin/sequelize",
+    "count": "node ./scripts/line-of-code.js"
   },
   "dependencies": {
     "egg": "^2.6.1",

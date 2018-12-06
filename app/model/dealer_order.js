@@ -13,8 +13,11 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  dealerOrder.associate = function (models) {
-    // associations can be defined here
+  dealerOrder.associate = function dealerOrderAssociate() {
+    const {
+      DealerOrder, OrderItem2,
+    } = app.model
+    DealerOrder.belongsTo(OrderItem2)
   }
   return dealerOrder
 }

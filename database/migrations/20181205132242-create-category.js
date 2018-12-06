@@ -1,18 +1,20 @@
 
+
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('comments', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('categories', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    content: {
-      type: Sequelize.TEXT,
+    name: {
+      type: Sequelize.STRING,
     },
-    starts: {
-      type: Sequelize.INTEGER,
+    value: {
+      type: Sequelize.STRING,
     },
+
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,
@@ -24,5 +26,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('comments'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('categories'),
 }

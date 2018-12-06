@@ -13,7 +13,7 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  carouse.associate = function (models) {
+  carouse.associate = function carouseAssciate() {
     // associations can be defined here
   }
   return carouse

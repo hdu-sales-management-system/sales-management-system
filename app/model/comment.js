@@ -9,8 +9,9 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  comment.associate = function (models) {
-    // associations can be defined here
+  comment.associate = function commentAssociate() {
+    const { Comment, Present } = app.model
+    Comment.hasMany(Present)
   }
   return comment
 }
