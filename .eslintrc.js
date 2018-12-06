@@ -19,6 +19,7 @@ module.exports = {
       "never"
     ],
     "no-console": "warn",
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "no-plusplus": 0
   }
 }
