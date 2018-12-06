@@ -39,7 +39,7 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  
+
 
   down: (queryInterface, Sequelize) => queryInterface.dropTable('present_tags')
   ,

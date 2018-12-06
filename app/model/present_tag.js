@@ -1,7 +1,6 @@
 module.exports = (app) => {
   const {
     INTEGER,
-    STRING,
   } = app.Sequelize
   const presentTag = app.model.define('presentTag', {
     hot: INTEGER,

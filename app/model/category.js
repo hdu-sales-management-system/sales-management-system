@@ -15,7 +15,7 @@ module.exports = (app) => {
       Category,
       Present,
     } = app.model
-    
+
     Category.hasMany(Present)
   }
   return category

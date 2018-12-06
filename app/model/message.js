@@ -14,7 +14,7 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  message.associate = function messageAssociate(models) {
+  message.associate = function messageAssociate() {
     const {
       Message,
       User,

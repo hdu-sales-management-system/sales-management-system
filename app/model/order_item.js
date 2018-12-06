@@ -12,7 +12,7 @@ module.exports = (app) => {
     underscored: true,
   })
   orderItem.associate = function orderItemAssociate() {
-    const { 
+    const {
       OrderItem, Order, Present,
     } = app.model
     OrderItem.belongsTo(Order)

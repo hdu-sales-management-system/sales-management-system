@@ -6,7 +6,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.bulkInsert('carouses', [
-    { 
+    {
       name: '001',
       url: 'http://img59.ddimg.cn/216590051630379_y.jpg',
       start_day: new Date().toLocaleString(),
@@ -33,7 +33,7 @@ module.exports = {
       end_day: new Date(+Date.now() + 3600 * 24 * 7).toLocaleString(),
       priority: parseInt(Math.random() * 100, 10),
     },
-  ], {}),  
+  ], {}),
 
   down: (queryInterface, Sequelize) => {
     /*

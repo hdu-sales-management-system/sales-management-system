@@ -14,8 +14,8 @@ module.exports = (app) => {
     underscored: true,
   })
   Order.associate = function orderAssociate() {
-    const { 
-      OrderItem, User, 
+    const {
+      OrderItem, User,
     } = app.model
     Order.belongsTo(User)
     Order.hasMany(OrderItem)
