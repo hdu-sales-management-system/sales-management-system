@@ -24,6 +24,14 @@ export default (appInfo: EggAppInfo) => {
     password: '1203my',
     database: 'sale-system',
   }
+
+  config.security = {
+    domainWhiteList: ['http://localhost:7701', 'http://localhost', 'http://localhost:3000'],
+    csrf: {
+      enable: false,
+    },
+  }
+
   // the return config will combines to EggAppConfig
   return {
     ...config,
