@@ -21,10 +21,12 @@
     "lint:es": "eslint --ext .js database --fix -f table && eslint --ext .js app/model --fix -f table",
     "clean": "ets clean",
     "sq": "./node_modules/.bin/sequelize",
-    "count": "node ./scripts/line-of-code.js"
+    "count": "node ./scripts/line-of-code.js",
+    "restore": "yarn sq db:drop && yarn sq db:create --charset utf8 && yarn sq db:migrate && yarn sq db:seed:all"
   },
   "dependencies": {
     "egg": "^2.6.1",
+    "egg-cors": "^2.1.2",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^4.2.0",
     "mysql2": "^1.6.4"

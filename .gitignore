@@ -17,6 +17,7 @@ logs/
 test.*
 !database/**/*.js
 !app/model/*.js
+*.log
 
 # app/**/*.js
 test/**/*.js
