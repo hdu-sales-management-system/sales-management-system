@@ -10,10 +10,16 @@ logs/
 *.swp
 *.lock
 !yarn.lock
-*.js
+#*.js
 !.autod.conf.js
 
-app/**/*.js
+# custom
+test.*
+!database/**/*.js
+!app/model/*.js
+*.log
+
+# app/**/*.js
 test/**/*.js
 config/**/*.js
 app/**/*.map
