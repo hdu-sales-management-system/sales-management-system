@@ -6,15 +6,17 @@ module.exports = (app) => {
   const category = app.model.define('category', {
     name: STRING,
     value: STRING,
-  }, {})
+  }, {
+    underscored: true,
+  })
   category.associate = function categoryAssociate() {
     // associations can be defined here
     const {
-      Cateory,
+      Category,
       Present,
     } = app.model
     
-    Cateory.hasMany(Present)
+    Category.hasMany(Present)
   }
   return category
 }

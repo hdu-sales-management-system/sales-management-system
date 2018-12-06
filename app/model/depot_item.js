@@ -4,7 +4,7 @@ module.exports = (app) => {
     INTEGER,
     DOUBLE,
   } = app.Sequelize
-  const depotItem = app.model.define('depot_item', {
+  const depotItem = app.model.define('depotItem', {
     name: STRING,
     count: INTEGER,
     location: STRING,

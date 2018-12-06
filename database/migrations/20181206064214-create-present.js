@@ -43,10 +43,20 @@ module.exports = {
     cover: {
       type: Sequelize.STRING,
     },
-    cateory: {
+    categorystr: {
       type: Sequelize.STRING,
     },
-    cateory_id: {
+    category_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'categories',
+        key: 'id',
+      },
+      allowNull: true,
+    },
+    comment_id: {
       type: Sequelize.INTEGER,
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',

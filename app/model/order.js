@@ -18,7 +18,7 @@ module.exports = (app) => {
       OrderItem, User, 
     } = app.model
     Order.belongsTo(User)
-    Order.hasmany(OrderItem)
+    Order.hasMany(OrderItem)
   }
   return Order
 }

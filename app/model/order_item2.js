@@ -4,7 +4,7 @@ module.exports = (app) => {
     DATE,
     STRING,
   } = app.Sequelize
-  const orderItem2 = app.model.define('order_item2', {
+  const orderItem2 = app.model.define('orderItem2', {
     state: STRING,
     sum_money: DOUBLE,
     start_date: DATE,

@@ -19,20 +19,22 @@ module.exports = (app) => {
     originl_price: DOUBLE,
     price: DOUBLE,
     cover: STRING,
-    cateory: STRING,
+    categorystr: STRING, // duplication of name
   }, {
     underscored: true,
   })
   present.associate = function presentAssociate() {
     const {
-      Cateory, Image, Tag, Present, Comment,
+      Category, Image, Cart, Tag, Present, Comment, PresentTag,
     } = app.model
     Present.hasMany(Image)
     Present.hasMany(Comment)
-    Present.belongsTo(Cateory)
+    Present.belongsTo(Category)
+    Present.hasMany(Cart)
     Present.belongsToMany(Tag, {
-      throngh: 'presents_tag',
-      as: 'tag',
+      through: PresentTag,
+      foreignKey: 'present_id',
+      as: 'Tag',
     })
     // associations can be defined here
   }

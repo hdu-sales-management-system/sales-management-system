@@ -6,11 +6,13 @@ module.exports = (app) => {
   const cart = app.model.define('cart', {
     count: INTEGER,
     selected: BOOLEAN,
-  }, {})
+  }, {
+    underscored: true,
+  })
   cart.associate = function cartAssociate() {
     const { User, Cart, Present } = app.model
-    Cart.hasMany(Present)
-    Cart.hasMany(User)
+    Cart.belongsTo(Present)
+    Cart.belongsTo(User)
   }
   return cart
 }

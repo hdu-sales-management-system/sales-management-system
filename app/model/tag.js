@@ -10,14 +10,16 @@ module.exports = (app) => {
   }, {
     underscored: true,
   })
-  tag.associate = function tagAssociate(models) {
+  tag.associate = function tagAssociate() {
     const {
       Present,
       Tag,
+      PresentTag,
     } = app.model
     Tag.belongsToMany(Present, {
-      throngh: 'present_tag',
-      as: 'present',
+      through: PresentTag,
+      foreignKey: 'tag_id',
+      as: 'Present',
     })
     // associations can be defined here
   }
