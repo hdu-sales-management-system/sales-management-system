@@ -6,5 +6,6 @@ export default (app: Application) => {
   router.get('/', controller.home.index)
   router.post('/login', login.index)
   router.get('/sliders', carouse.index)
-  router.resources('presents', '/present', present)
+  router.get('/recommend', present.recommend)
+  router.resources('presents', '/presents', present)
 }

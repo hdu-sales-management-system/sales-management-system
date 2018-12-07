@@ -16,10 +16,13 @@ module.exports = (app) => {
     count: INTEGER,
     decription: TEXT,
     starts: INTEGER,
+    commentCount: INTEGER,
     originl_price: DOUBLE,
     price: DOUBLE,
     cover: STRING,
     categorystr: STRING, // duplication of name
+    composite: INTEGER,
+    saleCount: INTEGER,
   }, {
     underscored: true,
   })
