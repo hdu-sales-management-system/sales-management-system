@@ -31,6 +31,7 @@ export default class User extends Service {
 
     const orderInst = await Order.create({
       sum_money: sumMoney,
+      user_id: 1,
     })
 
     const orderId = orderInst.id
@@ -38,9 +39,7 @@ export default class User extends Service {
       item.order_id = orderId
     })
 
-    console.log(orderItems)
-
-    await OrderItem.bulkCrate(orderItems)
+    await OrderItem.bulkCreate(orderItems)
 
     await Order.findAll()
   }
