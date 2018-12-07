@@ -6,11 +6,11 @@ coverage/
 run/
 logs/
 .DS_Store
-.vscode
+# .vscode
 *.swp
 *.lock
 !yarn.lock
-#*.js
+# *.js
 !.autod.conf.js
 
 # custom
