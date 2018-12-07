@@ -1,7 +1,7 @@
 
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('present_tags', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('presenttags', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -41,6 +41,6 @@ module.exports = {
   }),
 
 
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('present_tags')
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('presenttags')
   ,
 }

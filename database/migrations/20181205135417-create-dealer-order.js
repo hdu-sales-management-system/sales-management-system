@@ -1,6 +1,6 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('dealer_orders', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('dealerorders', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -43,5 +43,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('dealer_orders'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('dealerorders'),
 }

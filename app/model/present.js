@@ -28,12 +28,13 @@ module.exports = (app) => {
   })
   present.associate = function presentAssociate() {
     const {
-      Category, Image, Cart, Tag, Present, Comment, PresentTag,
+      Category, Image, Cart, Tag, Present, Comment, PresentTag, OrderItem,
     } = app.model
     Present.hasMany(Image)
     Present.hasMany(Comment)
     Present.belongsTo(Category)
     Present.hasMany(Cart)
+    Present.hasMany(OrderItem)
     Present.belongsToMany(Tag, {
       through: PresentTag,
       foreignKey: 'present_id',
