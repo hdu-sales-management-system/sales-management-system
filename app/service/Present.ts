@@ -26,12 +26,20 @@ export default class Present extends Service {
       limit: count ? parseInt(count, 10) : 10,
       })
   }
+
   public async byId(id: string): Promise<object> {
     const { app } = this
-    const { model: { Present } } = app
-    const present = await Present.findOne({
+    const { model: { Present, Image, Comment } } = app
+    let present = await Present.findOne({
       where: {id},
+      include: [
+        { model: Image },
+        { model: Comment },
+      ],
     })
+    const images = present.images.map( img => img.url)
+    present = present.get({plain: true})
+    present.images = images
     return present
   }
 
