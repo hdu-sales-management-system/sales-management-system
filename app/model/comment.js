@@ -2,16 +2,20 @@ module.exports = (app) => {
   const {
     INTEGER,
     TEXT,
+    STRING,
   } = app.Sequelize
   const comment = app.model.define('comment', {
     content: TEXT,
-    starts: INTEGER,
+    stars: INTEGER,
+    avatar: STRING,
+    username: STRING,
   }, {
     underscored: true,
   })
   comment.associate = function commentAssociate() {
-    const { Comment, Present } = app.model
-    Comment.hasMany(Present)
+    const { Comment, Present, User } = app.model
+    Comment.belongsTo(Present)
+    Comment.belongsTo(User)
   }
   return comment
 }
