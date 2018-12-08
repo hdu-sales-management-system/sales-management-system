@@ -80,6 +80,16 @@ module.exports = {
       },
       allowNull: true,
     },
+    depotitem_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'depotitems',
+        key: 'id',
+      },
+      allowNull: true,
+    },
     comment_id: {
       type: Sequelize.INTEGER,
       onUpdate: 'CASCADE',

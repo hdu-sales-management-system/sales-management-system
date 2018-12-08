@@ -17,8 +17,10 @@ module.exports = (app) => {
     const {
       DepotItem,
       Depot,
+      Present,
     } = app.model
     DepotItem.belongsTo(Depot)
+    DepotItem.hasOne(Present)
   }
   return depotItem
 }
