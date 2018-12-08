@@ -1,7 +1,7 @@
 
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('depot_items', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('depotitems', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -47,5 +47,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('depot_items'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('depotitems'),
 }

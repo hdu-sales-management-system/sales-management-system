@@ -1,6 +1,6 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('order_items', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('orderitems', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -26,6 +26,16 @@ module.exports = {
       },
       allowNull: true,
     },
+    present_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'presents',
+        key: 'id',
+      },
+      allowNull: true,
+    },
     created_at: {
       allowNull: false,
       type: Sequelize.DATE,
@@ -37,5 +47,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('order_items'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('orderitems'),
 }

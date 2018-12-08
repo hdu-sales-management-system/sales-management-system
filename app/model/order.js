@@ -6,7 +6,7 @@ module.exports = (app) => {
   } = app.Sequelize
   const Order = app.model.define('order', {
     status: STRING,
-    sum_momey: DOUBLE,
+    sum_money: DOUBLE,
     feedback: STRING,
     start_date: DATE,
     received_date: DATE,

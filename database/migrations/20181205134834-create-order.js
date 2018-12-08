@@ -10,7 +10,7 @@ module.exports = {
     status: {
       type: Sequelize.STRING,
     },
-    sum_momey: {
+    sum_money: {
       type: Sequelize.DOUBLE,
     },
     feedback: {

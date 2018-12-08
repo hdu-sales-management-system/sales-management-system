@@ -34,6 +34,6 @@ export default class Login extends Service {
    * @return id current user's id
    */
   public getId(): string {
-    return this.userId
+    return this.userId || '0'
   }
 }

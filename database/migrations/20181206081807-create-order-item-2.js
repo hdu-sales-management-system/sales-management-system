@@ -1,7 +1,7 @@
 
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('order_item2s', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('orderitem2s', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -25,7 +25,7 @@ module.exports = {
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
       references: {
-        model: 'dealer_orders',
+        model: 'dealerorders',
         key: 'id',
       },
       allowNull: true,
@@ -41,5 +41,5 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW'),
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('order_item2s'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('orderitem2s'),
 }
