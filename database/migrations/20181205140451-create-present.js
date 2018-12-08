@@ -34,7 +34,7 @@ module.exports = {
       type: Sequelize.INTEGER,
       defaultValue: 0,
     },
-    decription: {
+    description: {
       type: Sequelize.TEXT,
     },
     starts: {

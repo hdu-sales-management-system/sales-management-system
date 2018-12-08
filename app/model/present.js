@@ -14,7 +14,7 @@ module.exports = (app) => {
     offcost: DOUBLE,
     hot: INTEGER,
     count: INTEGER,
-    decription: TEXT,
+    description: TEXT,
     starts: INTEGER,
     commentCount: INTEGER,
     originl_price: DOUBLE,
