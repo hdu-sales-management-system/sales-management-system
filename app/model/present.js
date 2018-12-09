@@ -14,7 +14,7 @@ module.exports = (app) => {
     offcost: DOUBLE,
     hot: INTEGER,
     count: INTEGER,
-    decription: TEXT,
+    description: TEXT,
     starts: INTEGER,
     commentCount: INTEGER,
     originl_price: DOUBLE,
@@ -28,13 +28,14 @@ module.exports = (app) => {
   })
   present.associate = function presentAssociate() {
     const {
-      Category, Image, Cart, Tag, Present, Comment, PresentTag, OrderItem,
+      Category, Image, Cart, Tag, Present, Comment, PresentTag, OrderItem, DepotItem,
     } = app.model
     Present.hasMany(Image)
     Present.hasMany(Comment)
     Present.belongsTo(Category)
     Present.hasMany(Cart)
     Present.hasMany(OrderItem)
+    Present.belongsTo(DepotItem)
     Present.belongsToMany(Tag, {
       through: PresentTag,
       foreignKey: 'present_id',

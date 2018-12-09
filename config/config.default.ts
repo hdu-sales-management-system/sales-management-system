@@ -26,7 +26,7 @@ export default (appInfo: EggAppInfo) => {
   }
 
   config.security = {
-    domainWhiteList: ['http://localhost:7701', 'http://localhost', 'http://localhost:3000'],
+    domainWhiteList: ['http://localhost:4000', 'http://localhost', 'http://localhost:3000'],
     csrf: {
       enable: false,
     },

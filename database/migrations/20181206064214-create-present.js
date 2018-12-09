@@ -34,7 +34,7 @@ module.exports = {
       type: Sequelize.INTEGER,
       defaultValue: 0,
     },
-    decription: {
+    description: {
       type: Sequelize.TEXT,
     },
     starts: {
@@ -76,6 +76,16 @@ module.exports = {
       onDelete: 'SET NULL',
       references: {
         model: 'categories',
+        key: 'id',
+      },
+      allowNull: true,
+    },
+    depot_item_id: {
+      type: Sequelize.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      references: {
+        model: 'depotitems',
         key: 'id',
       },
       allowNull: true,
