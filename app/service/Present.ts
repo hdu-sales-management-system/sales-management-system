@@ -69,16 +69,27 @@ export default class Present extends Service {
   }
 
   public async update(present): Promise<boolean> {
-      const { app } = this
-      const { model: { Present } } = app
-      let { id, ...restPresnt} = present
-      console.log(id, restPresnt)
-      id = parseInt(id, 10)
-      await Present.update(restPresnt, {
-        where: {
-          id,
-        },
-      })
-      return true
-    }
+    const { app } = this
+    const { model: { Present } } = app
+    let { id, ...restPresnt} = present
+    // console.log(id, restPresnt)
+    id = parseInt(id, 10)
+    await Present.update(restPresnt, {
+      where: {
+        id,
+      },
+    })
+    return true
+  }
+  public async new(item): Promise<boolean> {
+    const { app } = this
+    const { model: { Present, DepotItem } } = app
+    const { depot_item_id, ...restItem} = item
+    await Present.create(restItem)
+    await DepotItem.update(
+      {state: 'onshelf'},
+      { where: { id: depot_item_id }},
+    )
+    return true
+  }
 }

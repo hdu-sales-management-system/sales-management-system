@@ -12,7 +12,7 @@ export default class Cart extends Service {
   public async index(userId: string) {
     const { app } = this
     const { model: { Cart, Present } } = app
-    console.log(userId)
+    // console.log(userId)
     const cart = await Cart.findAll({
       include: [
         { model: Present },
@@ -32,7 +32,7 @@ export default class Cart extends Service {
   public async change(state: CartState): Promise<boolean> {
     const { app } = this
     const { model: { Cart } } = app
-    console.log(state)
+    // console.log(state)
     const {id, ...restState} = state
     return await Cart.update( restState, { where: {id} } )
   }

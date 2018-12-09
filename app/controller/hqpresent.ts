@@ -16,6 +16,13 @@ export default class HqpresentController extends Controller {
     ctx.body = {}
   }
 
+  public async create() {
+    const { ctx } = this
+    const { service } = ctx
+
+    ctx.body = service.present.new(ctx.request.body)
+  }
+
   public async update() {
       const { ctx } = this
       const { service } = ctx

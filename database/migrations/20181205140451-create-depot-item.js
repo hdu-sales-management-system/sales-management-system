@@ -26,6 +26,10 @@ module.exports = {
     bar_code: {
       type: Sequelize.STRING,
     },
+    state: {
+      type: Sequelize.STRING,
+      defaultValue: 'unshelf',
+    },
     depot_id: {
       type: Sequelize.INTEGER,
       onUpdate: 'CASCADE',
