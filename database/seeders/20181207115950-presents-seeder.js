@@ -27,7 +27,7 @@ module.exports = {
       commentCount: parseInt(Math.random() * 200, 10),
       composite: parseInt(Math.random() * 100, 10),
       saleCount: parseInt(Math.random() * 100, 10),
-      depotitem_id: 1,
+      depot_item_id: 1,
     }, {
       title: '戴尔台式机',
       description: '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
@@ -41,7 +41,7 @@ module.exports = {
       commentCount: parseInt(Math.random() * 200, 10),
       composite: parseInt(Math.random() * 100, 10),
       saleCount: parseInt(Math.random() * 100, 10),
-      depotitem_id: 2,
+      depot_item_id: 2,
     }, {
       title: '阿尼玛化妆品',
       description: '阿玛尼（GIORGIO ARMANI）轻垫精华红气垫/新款樱花粉气垫BB粉底液 #4 自然偏白 适合亚洲肤质偏白',
@@ -55,7 +55,7 @@ module.exports = {
       commentCount: parseInt(Math.random() * 200, 10),
       composite: parseInt(Math.random() * 100, 10),
       saleCount: parseInt(Math.random() * 100, 10),
-      depotitem_id: 3,
+      depot_item_id: 3,
     }, {
       title: '婴儿玩具摇铃',
       description: '【120度水煮消毒】婴儿玩具摇铃新生儿0-3-6-12个月牙胶手摇铃宝宝玩具0-1岁益智 10件套婴儿摇铃-高温水煮消毒',
@@ -69,7 +69,7 @@ module.exports = {
       commentCount: parseInt(Math.random() * 200, 10),
       composite: parseInt(Math.random() * 100, 10),
       saleCount: parseInt(Math.random() * 100, 10),
-      depotitem_id: 4,
+      depot_item_id: 4,
     },
   ], {}),
 

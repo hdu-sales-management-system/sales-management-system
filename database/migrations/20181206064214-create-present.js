@@ -80,7 +80,7 @@ module.exports = {
       },
       allowNull: true,
     },
-    depotitem_id: {
+    depot_item_id: {
       type: Sequelize.INTEGER,
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
