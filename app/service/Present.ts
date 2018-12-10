@@ -1,12 +1,18 @@
 // 2018-12-06 created by Dov Yih
 import { Service } from 'egg'
+import { Op } from 'sequelize'
 
 interface Param {
-  category: string,
-  offset: string,
-  count: string,
-  order: string,
-  type: string,
+  category?: string,
+  offset?: string,
+  count?: string,
+  order?: string,
+  type?: string,
+  q?: string,
+}
+interface Condition {
+  categorystr?: string,
+  title?: object,
 }
 
 export default class Present extends Service {
@@ -14,11 +20,21 @@ export default class Present extends Service {
   public async filter(params: Param): Promise<Array<object>> {
     const { app } = this
     const { model: { Present } } = app
-    const { category, offset, count, order, type } = params
-    const whereCondition = category ? { categorystr: category } : {}
+    const { category, offset, count, order, type, q } = params
+    let whereCondition: Condition = {}
+    if ( category ) {
+      whereCondition.categorystr = category
+    }
+    if ( q ) {
+      whereCondition.title = {
+        [Op.like]: '%' + q + '%',
+      }
+    }
+    //  category ? { categorystr: category } : {}
     const orderCondition: [string[]] = [
       [type || 'composite', order || 'desc']
     ]
+    console.log(orderCondition)
     return await Present.findAll({
       order: orderCondition,
       where: whereCondition,
