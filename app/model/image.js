@@ -4,6 +4,7 @@ module.exports = (app) => {
   } = app.Sequelize
   const image = app.model.define('image', {
     url: STRING,
+    type: STRING, // carourse/detail
   }, {
     underscored: true,
   })

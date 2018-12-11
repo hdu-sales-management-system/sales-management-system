@@ -11,7 +11,10 @@ module.exports = {
     name: {
       type: Sequelize.STRING,
     },
-    count: {
+    stockCount: {
+      type: Sequelize.INTEGER,
+    },
+    saleCount: {
       type: Sequelize.INTEGER,
     },
     location: {

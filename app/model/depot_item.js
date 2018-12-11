@@ -6,7 +6,8 @@ module.exports = (app) => {
   } = app.Sequelize
   const depotItem = app.model.define('depotItem', {
     name: STRING,
-    count: INTEGER,
+    stockCount: INTEGER,
+    saleCount: INTEGER,
     location: STRING,
     purchase_price: DOUBLE,
     supplier: STRING,
