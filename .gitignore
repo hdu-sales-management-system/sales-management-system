@@ -18,6 +18,10 @@ test.*
 !database/**/*.js
 !app/model/*.js
 *.log
+app/public/images/*.png
+app/public/images/*.jpg
+app/public/images/*.jpeg
+app/public/images/*.gif
 
 # app/**/*.js
 test/**/*.js

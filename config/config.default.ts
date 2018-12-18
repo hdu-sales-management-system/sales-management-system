@@ -31,7 +31,9 @@ export default (appInfo: EggAppInfo) => {
       enable: false,
     },
   }
-
+  config.multipart  = {
+    mode: 'file',
+  }
   // the return config will combines to EggAppConfig
   return {
     ...config,

@@ -21,7 +21,7 @@ export default class Present extends Service {
     const { app } = this
     const { model: { Present } } = app
     const { category, offset, count, order, type, q } = params
-    let whereCondition: Condition = {}
+    const whereCondition: Condition = {}
     if ( category ) {
       whereCondition.categorystr = category
     }
@@ -32,7 +32,7 @@ export default class Present extends Service {
     }
     //  category ? { categorystr: category } : {}
     const orderCondition: [string[]] = [
-      [type || 'composite', order || 'desc']
+      [type || 'composite', order || 'desc'],
     ]
     console.log(orderCondition)
     return await Present.findAll({
@@ -58,7 +58,7 @@ export default class Present extends Service {
         { model: Comment },
       ],
     })
-    const images = present.images.map(img => img.url)
+    const images = present.images.map((img) => img.url)
     present = present.get({ plain: true })
     present.images = images
     return present
@@ -97,15 +97,27 @@ export default class Present extends Service {
     })
     return true
   }
+
   public async new(item): Promise<boolean> {
     const { app } = this
     const { model: { Present, DepotItem } } = app
-    const { depot_item_id, ...restItem} = item
-    await Present.create(restItem)
+    const { id, present} = item
+
+    // 创建礼品
+    await Present.create(present)
+
+    // 更新状态
     await DepotItem.update(
       {state: 'onshelf'},
-      { where: { id: depot_item_id }},
+      {where: { id }},
     )
+
+    // 库存数量自减
+    const depotItem = await DepotItem.findById(id)
+    depotItem.decrement({
+      stockCount: item.saleCount,
+    })
     return true
   }
+
 }

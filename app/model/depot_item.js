@@ -13,7 +13,14 @@ module.exports = (app) => {
     supplier: STRING,
     bar_code: STRING,
     state: STRING, // onshelf/unshelf
-  }, {})
+  }, {
+    underscored: true,
+    getterMethods: {
+      totalCount() {
+        return this.getDataValue('stockCount') + this.getDataValue('saleCount')
+      },
+    },
+  })
   depotItem.associate = function depotItemAssociate() {
     // associations can be defined here
     const {

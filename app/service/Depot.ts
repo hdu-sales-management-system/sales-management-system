@@ -7,8 +7,8 @@ export default class Depot extends Service {
   public async getAll(query): Promise<[]> {
     const { app } = this
     const { model: { DepotItem } } = app
-    let {q, ...restQuery} = query
-    if(q) {
+    const {q, ...restQuery} = query
+    if (q) {
       restQuery.name = {
         [Op.like]: '%' + q + '%',
       }
