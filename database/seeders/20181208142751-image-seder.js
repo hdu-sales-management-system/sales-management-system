@@ -129,24 +129,19 @@ module.exports = {
     },
     // 索尼
     ...Array(25).fill('').map((val, idx) => ({
-      url: 'http://img3m0.ddimg.cn/79/35/1429007560-1_e_1.jpg',
+      url: 'http://img3m0.ddimg.cn/79/35/1429007560-2_e_1.jpg',
       type: 'carource',
-      present_id: idx + 4,
+      present_id: idx + 5,
     })),
     ...Array(25).fill('').map((val, idx) => ({
       url: 'http://img3m0.ddimg.cn/79/35/1429007560-4_e_1.jpg',
       type: 'carource',
-      present_id: idx + 4,
-    })),
-    ...Array(25).fill('').map((val, idx) => ({
-      url: 'http://img56.ddimg.cn/200390044239646_y.jpg',
-      type: 'detail',
-      present_id: idx + 4,
+      present_id: idx + 5,
     })),
     ...Array(25).fill('').map((val, idx) => ({
       url: 'http://img57.ddimg.cn/48610025313107.jpg',
       type: 'detail',
-      present_id: idx + 4,
+      present_id: idx + 5,
     })),
   ], {}),
 

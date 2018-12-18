@@ -10,7 +10,7 @@ export default (app: Application) => {
   router.post('/purchase', user.purchase)
 
   router.post('/upload/cover', image.cover)
-
+  router.resources('image', '/image', image)
   router.resources('presents', '/presents', present)
   router.resources('cart', '/user/:user_id/cart', cart)
   const hqCheck = app.middleware.permission()

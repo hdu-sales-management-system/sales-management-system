@@ -4,12 +4,11 @@ module.exports = (app) => {
   } = app.Sequelize
   const image = app.model.define('image', {
     url: STRING,
-    type: STRING, // carourse/detail
+    type: STRING, // carourse/detail/cover
   }, {
     underscored: true,
   })
   image.associate = function imageAssociate() {
-    // associations can be defined here
     const { Image, Present } = app.model
     Image.belongsTo(Present)
   }
