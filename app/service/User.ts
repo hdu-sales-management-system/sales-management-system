@@ -11,37 +11,47 @@ export default class User extends Service {
     const { app } = this
     const { model: { Order, Present, OrderItem } } = app
     // const userId = this.ctx.session.userId
+    const userId = 1
     const presentIds: [string] = order.map( (item) => item.id)
-    // const orderWithId: [OrderItem] = order.map( (item) => ({[item.id]: item.count}))
+    // find all present exisit
     const presents = await Present.findAll({
-      where: {
-        id: {
-          [Op.in]: presentIds,
-        },
-      },
+      where: { id: { [Op.in]: presentIds } },
     })
 
+    // make order items array for blukcreate
     const orderItems = presents.map( (present) => {
       const {id, price} = present.get({plain: true})
       const {count} = order.find( (item) => id == item.id)
-      return {present_id: id, count, price, order_id: 0}
+      return {present_id: id, count, price, order_id: 0} // temp order id
     })
 
     const sumMoney = orderItems.reduce((sum, orderItem) => sum += orderItem.price, 0)
 
     const orderInst = await Order.create({
       sum_money: sumMoney,
-      user_id: 1,
+      user_id: userId,
+      status: 'payed',
     })
 
+    // reset order id
     const orderId = orderInst.id
     orderItems.forEach( (item) => {
-      item.order_id = orderId
+      item.order_id = orderId // the right order id
     })
 
     await OrderItem.bulkCreate(orderItems)
 
-    await Order.findAll()
+    // TODO cart remove present
+    return sumMoney
   }
 
+  public async self() {
+    const { app } = this
+    const { model: { User } } = app
+    //  const userId = this.ctx.session.userId
+    const userId = 1
+    return await User.findOne({where: {
+      id: userId,
+    }})
+  }
 }

@@ -29,11 +29,42 @@ export default class Cart extends Service {
     })
   }
 
+  /**
+   * 
+   * @param state [object]
+   * @param state.id [string]
+   * @param state.selected [boolean]
+   * @param state.count [string]
+   *
+   */
   public async change(state: CartState): Promise<boolean> {
     const { app } = this
     const { model: { Cart } } = app
     // console.log(state)
     const {id, ...restState} = state
     return await Cart.update( restState, { where: {id} } )
+  }
+
+  /**
+   * 
+   * @param userId [number]
+   * @param presentId [number]
+   * @param count [number] 假设为 1
+   */
+  public async add(userId, presentId, count): Promise<boolean> {
+    const { app } = this
+    const { model: { Cart } } = app
+    if( !userId || !presentId || !count) {
+      return false
+    }
+    const cartRes = await Cart.findOrCreate({
+        where: {
+        user_id: userId,
+        present_id: presentId,
+      },
+    })
+    await cartRes[0].update({selected: true})
+    await cartRes[0].increment('count', {by: count})
+    return true
   }
 }

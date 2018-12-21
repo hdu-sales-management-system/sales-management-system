@@ -5,7 +5,6 @@ export default class CartController extends Controller {
   public async index() {
     const { ctx } = this
     const { service } = ctx
-    console.log(ctx.params)
     const { user_id } = ctx.params
     ctx.body = await service.cart.index(user_id)
   }
@@ -14,12 +13,16 @@ export default class CartController extends Controller {
     const { ctx } = this
     const { service } = ctx
     const state = ctx.request.body
-    console.log(state)
     const isSucc = await service.cart.change(state)
     ctx.body = { state: isSucc }
   }
   public async create() {
-    // const { ctx } = this
-    // const { service } = ctx
+    const { ctx } = this
+    const { service } = ctx
+    const present = ctx.request.body
+    const userId = ctx.params.user_id
+    const {id: presentId, count} = present
+    const isSucc = await service.cart.add(userId, presentId, count)
+    ctx.body = {isSucc}
   }
 }

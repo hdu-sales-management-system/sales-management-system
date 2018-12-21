@@ -10,9 +10,11 @@ module.exports = {
     },
     count: {
       type: Sequelize.INTEGER,
+      defaultValue: 0,
     },
     selected: {
       type: Sequelize.BOOLEAN,
+      defaultValue: true,
     },
     user_id: {
       type: Sequelize.INTEGER,

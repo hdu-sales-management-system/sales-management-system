@@ -2,7 +2,10 @@ import { Application } from 'egg'
 
 export default (app: Application) => {
   const { controller, router } = app
-  const { login, present, carouse, cart, user, hqpresent, depot, image } = controller
+  const {
+    login, present, carouse, cart, user, hqpresent,
+    depot, image, order,
+   } = controller
   router.get('/', controller.home.index)
   router.post('/login', login.index)
   router.get('/sliders', carouse.index)
@@ -13,6 +16,7 @@ export default (app: Application) => {
   router.resources('image', '/image', image)
   router.resources('presents', '/presents', present)
   router.resources('cart', '/user/:user_id/cart', cart)
+  router.resources('order', '/order', order)
   const hqCheck = app.middleware.permission()
   /**
    * @param hq headquarters
