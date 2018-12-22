@@ -21,8 +21,8 @@ export default class Order extends Service {
       const { id, sum_money, created_at } = order
       const orderItems = order.orderItems.map( item => {
         const { id, count, price } = item
-        const { description, cover} = item.present
-        return { id, count, description, price, cover}
+        const { description, cover, id: pId} = item.present
+        return { id, count, description, price, cover, pId}
       })
       const count = orderItems.length
       return { id, sum_money, start_date: created_at, count, orderItems }

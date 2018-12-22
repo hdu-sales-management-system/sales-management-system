@@ -4,18 +4,19 @@ export default (app: Application) => {
   const { controller, router } = app
   const {
     login, present, carouse, cart, user, hqpresent,
-    depot, image, order,
+    depot, image, order, comment,
    } = controller
   router.get('/', controller.home.index)
   router.post('/login', login.index)
   router.get('/sliders', carouse.index)
   router.get('/recommend', present.recommend)
   router.post('/purchase', user.purchase)
-
   router.post('/upload/cover', image.cover)
+
+  router.resources('cart', '/user/:user_id/cart', cart)
+  router.resources('comment', '/comment', comment)
   router.resources('image', '/image', image)
   router.resources('presents', '/presents', present)
-  router.resources('cart', '/user/:user_id/cart', cart)
   router.resources('order', '/order', order)
   const hqCheck = app.middleware.permission()
   /**

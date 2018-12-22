@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportCart from '../../../app/service/Cart';
+import ExportComment from '../../../app/service/Comment';
 import ExportDepot from '../../../app/service/Depot';
 import ExportFs from '../../../app/service/Fs';
 import ExportImage from '../../../app/service/Image';
@@ -15,6 +16,7 @@ import ExportUser from '../../../app/service/User';
 declare module 'egg' {
   interface IService {
     cart: ExportCart;
+    comment: ExportComment;
     depot: ExportDepot;
     fs: ExportFs;
     image: ExportImage;

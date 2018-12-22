@@ -4,6 +4,7 @@
 import 'egg';
 import ExportCarouse from '../../../app/controller/carouse';
 import ExportCart from '../../../app/controller/cart';
+import ExportComment from '../../../app/controller/comment';
 import ExportDepot from '../../../app/controller/depot';
 import ExportHome from '../../../app/controller/home';
 import ExportHqpresent from '../../../app/controller/hqpresent';
@@ -17,6 +18,7 @@ declare module 'egg' {
   interface IController {
     carouse: ExportCarouse;
     cart: ExportCart;
+    comment: ExportComment;
     depot: ExportDepot;
     home: ExportHome;
     hqpresent: ExportHqpresent;

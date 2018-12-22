@@ -2,8 +2,14 @@
 import { Service } from 'egg'
 import { Op } from 'sequelize'
 
-// interface OrderItem {
-//   id: string
+// interface UserIF {
+//   id: number,
+//   context: string,
+//   avatar: string,
+//   username: string,
+//   stars: number,
+//   user_id: number,
+//   present_id: number,
 // }
 export default class User extends Service {
 
