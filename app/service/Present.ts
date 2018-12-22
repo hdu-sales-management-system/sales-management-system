@@ -55,8 +55,9 @@ export default class Present extends Service {
       where: { id },
       include: [
         { model: Image },
-        { model: Comment },
+        { model: Comment},
       ],
+      order: [[ {model: Comment}, 'created_at', 'DESC' ]],
     })
     const images = present.images.map((img) => img.url)
     present = present.get({ plain: true })

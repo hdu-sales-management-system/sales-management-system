@@ -24,7 +24,7 @@ export default class Order extends Service {
         const { description, cover, id: pId} = item.present
         return { id, count, description, price, cover, pId}
       })
-      const count = orderItems.length
+      const count = order.orderItems.reduce((sum, item) => sum += item.count, 0)
       return { id, sum_money, start_date: created_at, count, orderItems }
     })
     return plainOrders

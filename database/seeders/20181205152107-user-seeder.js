@@ -5,6 +5,7 @@ module.exports = {
     {
       name: '测试人1',
       nickname: 'test1',
+      avatar: 'http://dummyimage.com/750x750/50B347/FFF&text=Avatar',
       order_address: '海南省 海口市 美兰区',
       gender: true,
       password: '123456',
@@ -12,12 +13,14 @@ module.exports = {
     }, {
       name: '康明',
       nickname: 'kangming',
+      avatar: 'http://dummyimage.com/750x750/50B347/FFF&text=Avatar',
       order_address: '甘肃省 甘南藏族自治州 舟曲县',
       password: 123456,
       gender: true,
       phone: '12345678901',
     }, {
       nickname: 'longyang',
+      avatar: 'http://dummyimage.com/750x750/50B347/FFF&text=Avatar',
       password: 123456,
       order_address: '宁夏回族自治区 银川市 永宁县',
       name: '龙艳',
@@ -26,6 +29,7 @@ module.exports = {
     },
     {
       nickname: 'wangxiulan',
+      avatar: 'http://dummyimage.com/750x750/50B347/FFF&text=Avatar',
       password: 123456,
       order_address: '湖北省 孝感市 汉川市',
       name: '王秀兰',

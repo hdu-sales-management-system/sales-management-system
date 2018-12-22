@@ -15,23 +15,35 @@ export default class User extends Service {
 
   public async purchase(order) {
     const { app } = this
-    const { model: { Order, Present, OrderItem } } = app
+    const { model: { Order, Present, OrderItem, DepotItem } } = app
     // const userId = this.ctx.session.userId
     const userId = 1
     const presentIds: [string] = order.map( (item) => item.id)
-    // find all present exisit
+
+    // find all exisit present
     const presents = await Present.findAll({
       where: { id: { [Op.in]: presentIds } },
+      include: [{model: DepotItem}]
     })
 
     // make order items array for blukcreate
-    const orderItems = presents.map( (present) => {
-      const {id, price} = present.get({plain: true})
-      const {count} = order.find( (item) => id == item.id)
-      return {present_id: id, count, price, order_id: 0} // temp order id
-    })
+    const orderItems: any[] = await Promise.all(
+      presents.map( async (present) => {
+        // const decrementCount = presentCount[idx]
+        const {id, price} = present.get({plain: true})
+        let {count} = order.find( (item) => id == item.id)
+        count = parseInt(count, 10)
 
-    const sumMoney = orderItems.reduce((sum, orderItem) => sum += orderItem.price, 0)
+        await present.decrement('count', { by: count } )
+        await present.depotItem.decrement('stockCount', { by: count})
+
+        return {present_id: id, count, price, order_id: 0} // temp order id
+      })
+    )
+    const sumMoney = orderItems.reduce(
+      (sum, orderItem) => sum += orderItem.price * orderItem.count,
+      0,
+    )
 
     const orderInst = await Order.create({
       sum_money: sumMoney,

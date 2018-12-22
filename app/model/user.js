@@ -7,6 +7,7 @@ module.exports = (app) => {
   const user = app.model.define('user', {
     nickname: STRING,
     password: STRING,
+    avatar: STRING,
     order_address: STRING,
     birthday: DATE,
     name: STRING,

@@ -12,9 +12,9 @@ export default class UserController extends Controller {
     public async purchase() {
       const { ctx } = this
       const { service } = ctx
-      const sumMony = await service.user.purchase(ctx.request.body)
+      const sumMoney = await service.user.purchase(ctx.request.body)
       const user = await service.user.self()
-      ctx.body = {sumMony, user}
+      ctx.body = {method: '支付宝支付', sumMoney, user, discounts: 0}
     }
 
 }
