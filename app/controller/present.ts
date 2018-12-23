@@ -17,10 +17,31 @@ export default class PresentController extends Controller {
     ctx.body = await service.present.byId(id)
   }
 
-  public async recommend() {
-      const { ctx } = this
-      const { service } = ctx
-      ctx.body = await service.present.recommend()
-    }
+  public async recommend2() {
+    const { ctx } = this
+    const { service } = ctx
+    const presents = await service.present.recommend()
+    let res = presents.map((present) => {
+      const plianP = present.get({ plain: true })
+      if (Math.random() > 0.5) {
+        return plianP
+      }
+      return undefined
+    }).filter(value => !!value)
+      .slice(0, 10)
+    ctx.body = res
+  }
 
+  public async recommend() {
+    const { ctx } = this
+    const { service } = ctx
+    const presents = await service.present.recommend()
+    ctx.body = presents.slice(0, 10)
+  }
+
+  public async search() {
+    const { ctx } = this
+    const { service } = ctx
+    ctx.body = await service.present.search(ctx.request.body.q)
+  }
 }

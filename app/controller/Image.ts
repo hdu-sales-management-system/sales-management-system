@@ -1,8 +1,7 @@
 // 2018-12-17 created by Dov Yih
 import { Controller } from 'egg'
-import { join } from 'path'
 
-interface fileType {
+interface FileType {
   field: string,
   filename: string,
   encoding: string,
@@ -10,15 +9,17 @@ interface fileType {
   filepath: string,
 }
 export default class ImageController extends Controller {
+
   public async cover() {
-    const { ctx } = this
-    const { service } = ctx
+    await this.save('cover')
+  }
 
-    const file: fileType = ctx.request.files[0]
-    const publicPath: string = join( this.config.baseDir, 'app/public/images' )
-    const filepath: string = await service.fs.mv(file.filepath, publicPath)
+  public async detail() {
+    await this.save('detail')
+  }
 
-    ctx.body = await service.image.create(filepath, 'cover')
+  public async carouse() {
+    await this.save('carouse')
   }
 
   public async show() {
@@ -27,8 +28,17 @@ export default class ImageController extends Controller {
     // present id
     const id = ctx.params.id
     const { type } = ctx.query
-    console.log(type)
     const images = await service.image.byId(id, type)
     ctx.body = images
+  }
+
+  private async save(type: string) {
+    const { ctx } = this
+    const { service } = ctx
+
+    const file: FileType = ctx.request.files[0]
+    const filepath: string = await service.fs.mv(file.filepath)
+
+    ctx.body = await service.image.create(filepath, type)
   }
 }

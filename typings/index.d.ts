@@ -1,7 +1,7 @@
 import 'egg';
 import "egg-sequelize";
 declare module 'egg' {
-  interface fileType {
+  export interface FileType {
     field: string,
     filename: string,
     encoding: string,
@@ -9,6 +9,6 @@ declare module 'egg' {
     filepath: string,
   }
   export interface Request {
-    files: fileType[]
+    files: FileType[]
   }
 }

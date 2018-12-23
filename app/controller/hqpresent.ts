@@ -24,10 +24,10 @@ export default class HqpresentController extends Controller {
   }
 
   public async update() {
-      const { ctx } = this
-      const { service } = ctx
-      await service.present.update(ctx.request.body)
-      ctx.body = {}
-    }
+    const { ctx } = this
+    const { service } = ctx
+    // await service.present.update(ctx.request.body)
+    ctx.body = await service.present.update(ctx.request.body)
+  }
 
 }

@@ -13,6 +13,7 @@ interface Param {
 interface Condition {
   categorystr?: string,
   title?: object,
+  description?: object,
 }
 
 export default class Present extends Service {
@@ -34,7 +35,6 @@ export default class Present extends Service {
     const orderCondition: [string[]] = [
       [type || 'composite', order || 'desc'],
     ]
-    console.log(orderCondition)
     return await Present.findAll({
       order: orderCondition,
       where: whereCondition,
@@ -65,14 +65,14 @@ export default class Present extends Service {
     return present
   }
 
-  public async recommend(): Promise<Array<object>> {
+  public async recommend(): Promise<any[]> {
     const { app } = this
     const { model: { Present } } = app
     return await Present.findAll({
       order: [
         ['hot', 'desc'],
       ],
-      limit: 10,
+      // limit: 10,
     })
   }
 
@@ -100,12 +100,14 @@ export default class Present extends Service {
   }
 
   public async new(item): Promise<boolean> {
-    const { app } = this
+    const { app, ctx: {service} } = this
     const { model: { Present, DepotItem } } = app
-    const { id, present} = item
-
+    const { id, present, images } = item
+    console.log(item)
     // 创建礼品
-    await Present.create(present)
+    const presentInst = await Present.create(present)
+
+    service.image.updateId(presentInst.id, images)
 
     // 更新状态
     await DepotItem.update(
@@ -119,6 +121,25 @@ export default class Present extends Service {
       stockCount: item.saleCount,
     })
     return true
+  }
+  public async search(key: Param): Promise<Array<object>> {
+    const { app } = this
+    const { model: { Present } } = app
+    const whereCondition: Condition = {}
+
+    if (key) {
+      whereCondition.title = {
+        [Op.like]: '%' + key + '%',
+      }
+      whereCondition.description = {
+        [Op.like]: '%' + key + '%',
+      }
+      return await Present.findAll({
+        where: whereCondition,
+        limit: 10,
+      })
+    }
+    return []
   }
 
 }

@@ -6,12 +6,14 @@ import { join, extname } from 'path'
 
 export default class Fs extends Service {
 
-  public async mv(tempFullPath, newPath): Promise<string> {
+  public async mv(tempFullPath): Promise<string> {
+    const publicDir: string = join(this.config.baseDir, 'app/public/images')
     const newFilename: string = createHash('md5').update(tempFullPath).digest('hex') + extname(tempFullPath)
     const publicPath: string = 'http://localhost:7001/public/images/' +  newFilename
+
     return new Promise( function mvPromise(resolve, reject) {
       const readStream = createReadStream(tempFullPath)
-      const writeStream = createWriteStream( join( newPath, newFilename) )
+      const writeStream = createWriteStream(join(publicDir, newFilename) )
 
       readStream.on('error', reject)
       writeStream.on('error', reject)
